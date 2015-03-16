@@ -33,7 +33,7 @@
             // 
             // PrintService
             // 
-            this.ServiceName = "Service1";
+            this.ServiceName = "LabelPrintService";
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
 
         }

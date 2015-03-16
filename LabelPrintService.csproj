@@ -48,11 +48,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LabelPrintService.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +66,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LabelPrintDataSet.cs">
+      <DependentUpon>LabelPrintDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LabelPrintDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabelPrintDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="NetworkStatus.cs" />
     <Compile Include="NetworkStatusChangedArgs.cs" />
     <Compile Include="ProjectInstaller.cs">
@@ -68,6 +82,11 @@
     </Compile>
     <Compile Include="ProjectInstaller.Designer.cs">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ServiceMain.cs">
       <SubType>Component</SubType>
@@ -109,7 +128,33 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="LabelPrintDataSet.xsc">
+      <DependentUpon>LabelPrintDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LabelPrintDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LabelPrintDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="LabelPrintDataSet.xss">
+      <DependentUpon>LabelPrintDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RawPrinterLibrary\RawPrinterLibrary.csproj">
+      <Project>{771A7A67-D39D-40B4-8EFE-5A0BADBB7B37}</Project>
+      <Name>RawPrinterLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZebraLibrary\ZPLEncodingLibrary.csproj">
+      <Project>{D3F022F6-A4B4-49D0-A613-0E6AA87B9F35}</Project>
+      <Name>ZPLEncodingLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
